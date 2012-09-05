@@ -1,0 +1,85 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>me.znickq</groupId>
+	<artifactId>AlmuraControlPanel</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>AlmuraControlPanel</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	<repositories>
+
+		<!-- Repository for Spout -->
+		<repository>
+			<id>spout-repo</id>
+			<url>http://repo.spout.org</url>
+		</repository>
+		<!-- Repository for Bukkit -->
+		<repository>
+			<id>bukkit-repo</id>
+			<url>http://repo.bukkit.org/content/groups/public</url>
+		</repository>
+	</repositories>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.almuramc</groupId>
+			<artifactId>backpack</artifactId>
+			<version>dev-SNAPSHOT</version>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>net.windwaker</groupId>
+			<artifactId>textureme</artifactId>
+			<version>0.6</version>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>com.almuramc</groupId>
+			<artifactId>HelpRequest</artifactId>
+			<version>1.0-SNAPSHOT</version>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>com.almuramc</groupId>
+			<artifactId>MailerMan</artifactId>
+			<version>1.0-SNAPSHOT</version>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>me.Dockter</groupId>
+			<artifactId>InfoGuide</artifactId>
+			<version>1.9</version>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>me.znickq</groupId>
+			<artifactId>PlayerPlus</artifactId>
+			<version>1.0-SNAPSHOT</version>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>org.getspout</groupId>
+			<artifactId>spoutplugin</artifactId>
+			<version>dev-SNAPSHOT</version>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>org.bukkit</groupId>
+			<artifactId>craftbukkit</artifactId>
+			<version>1.3.1-R2.1-SNAPSHOT</version>
+			<type>jar</type>
+		</dependency>
+	 <dependency>
+	  <groupId>${project.groupId}</groupId>
+	  <artifactId>PlayerPlus</artifactId>
+	  <version>${project.version}</version>
+	 </dependency>
+	</dependencies>
+</project>
