@@ -9,6 +9,7 @@ import java.util.List;
 import me.znickq.almuracontrolpanel.widgets.*;
 import org.bukkit.Bukkit;
 import org.getspout.spoutapi.gui.GenericPopup;
+import org.getspout.spoutapi.gui.WidgetAnchor;
 
 /**
  *
@@ -32,11 +33,12 @@ public class ControlPanelGUI extends GenericPopup{
 		
 		addBackpack();
 		
-		int top = 30;
-		int xC = 50;
+		int top = -90;
+		int xC = -150;
 		
 		for(GuiButton button : available) {
-			button.setX(xC).setY(top);
+			button.setAnchor(WidgetAnchor.CENTER_CENTER);
+			button.shiftXPos(xC).shiftYPos(top);
 			button.setHeight(20).setWidth(70);
 			attachWidget(instance, button);
 			top+=35;

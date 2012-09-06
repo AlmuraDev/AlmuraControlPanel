@@ -9,6 +9,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.getspout.spoutapi.event.input.KeyPressedEvent;
+import org.getspout.spoutapi.gui.ScreenType;
 import org.getspout.spoutapi.keyboard.Keyboard;
 
 /**
@@ -30,6 +31,9 @@ public class AlmuraControlPanel extends JavaPlugin implements Listener{
 	@EventHandler
 	public void onInput(KeyPressedEvent event) {
 		if(event.getKey() != Keyboard.KEY_Y) {
+			return;
+		}
+		if(event.getScreenType() != ScreenType.GAME_SCREEN) {
 			return;
 		}
 		event.getPlayer().getMainScreen().attachPopupScreen(new ControlPanelGUI(this));
