@@ -4,7 +4,6 @@
  */
 package me.znickq.almuracontrolpanel.widgets;
 
-import net.dockter.infoguide.Main;
 import net.dockter.infoguide.GuideListener;
 import org.getspout.spoutapi.player.SpoutPlayer;
 
