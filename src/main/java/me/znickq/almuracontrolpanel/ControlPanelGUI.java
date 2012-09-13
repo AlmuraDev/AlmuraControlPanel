@@ -26,13 +26,12 @@ public class ControlPanelGUI extends GenericPopup{
 		GenericTexture border = new GenericTexture("http://www.pixentral.com/pics/1duZT49LzMnodP53SIPGIqZ8xdKS.png");
 		border.setAnchor(WidgetAnchor.CENTER_CENTER);
 		border.setPriority(RenderPriority.High);
-		border.setWidth(420).setHeight(345);
-		border.shiftXPos(-205).shiftYPos(-120);
+		border.setWidth(140).setHeight(190);
+		border.shiftXPos(-60).shiftYPos(-80);
 		
 		CloseButton close = new CloseButton(instance);
 		close.setAnchor(WidgetAnchor.CENTER_CENTER);
 		close.setHeight(15).setWidth(50);
-		close.shiftXPos(150).shiftYPos(95);
 		
 		attachWidgets(instance, border, close);
 		
@@ -49,16 +48,16 @@ public class ControlPanelGUI extends GenericPopup{
 		
 		addBackpack();
 		
-		int top = -90;
-		int xC = -150;
+		int top = -60;
 		
 		for(GuiButton button : available) {
 			button.setAnchor(WidgetAnchor.CENTER_CENTER);
-			button.shiftXPos(xC).shiftYPos(top);
+			button.shiftXPos(-button.getWidth()/2).shiftYPos(top);
 			button.setHeight(20).setWidth(70);
 			attachWidget(instance, button);
 			top+=35;
 		}
+		close.shiftXPos(-15).shiftYPos(top+10);
 	}
 	
 	private void addPlayerPlus() {
