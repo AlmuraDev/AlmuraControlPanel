@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package me.znickq.almuracontrolpanel;
+package com.almuramc.almuracontrolpanel;
 
 import net.dockter.infoguide.gui.GUIGuide;
 

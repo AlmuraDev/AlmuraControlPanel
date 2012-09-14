@@ -1,5 +1,5 @@
 name: AlmuraControlPanel
-main: me.znickq.almuracontrolpanel.AlmuraControlPanel
+main: com.almuramc.almuracontrolpanel.AlmuraControlPanel
 version: 0.1
 authors: [ZNickq, Dockter]
 commands:

@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package me.znickq.almuracontrolpanel.widgets;
+package com.almuramc.almuracontrolpanel.widgets;
 
 import net.windwaker.textureme.TextureMe;
 import net.windwaker.textureme.gui.Selector;

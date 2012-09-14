@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package me.znickq.almuracontrolpanel.widgets;
+package com.almuramc.almuracontrolpanel.widgets;
 
 import net.dockter.infoguide.GuideListener;
 import org.getspout.spoutapi.player.SpoutPlayer;

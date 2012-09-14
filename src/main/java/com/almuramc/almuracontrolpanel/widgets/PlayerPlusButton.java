@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package me.znickq.almuracontrolpanel.widgets;
+package com.almuramc.almuracontrolpanel.widgets;
 
 import com.almuramc.playerplus.PlayerPlus;
 import com.almuramc.playerplus.TextureChooser;

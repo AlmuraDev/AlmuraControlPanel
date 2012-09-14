@@ -2,17 +2,18 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package me.znickq.almuracontrolpanel;
+package com.almuramc.almuracontrolpanel;
 
 import java.util.ArrayList;
 import java.util.List;
-import me.znickq.almuracontrolpanel.widgets.*;
 import org.bukkit.Bukkit;
 import org.getspout.spoutapi.gui.GenericLabel;
 import org.getspout.spoutapi.gui.GenericPopup;
 import org.getspout.spoutapi.gui.GenericTexture;
 import org.getspout.spoutapi.gui.RenderPriority;
 import org.getspout.spoutapi.gui.WidgetAnchor;
+
+import com.almuramc.almuracontrolpanel.widgets.*;
 
 /**
  *

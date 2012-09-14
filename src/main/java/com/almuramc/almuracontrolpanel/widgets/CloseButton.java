@@ -2,12 +2,13 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package me.znickq.almuracontrolpanel.widgets;
+package com.almuramc.almuracontrolpanel.widgets;
 
-import me.znickq.almuracontrolpanel.AlmuraControlPanel;
 import me.znickq.playerplus.PlayerPlus;
 import org.getspout.spoutapi.event.screen.ButtonClickEvent;
 import org.getspout.spoutapi.gui.GenericButton;
+
+import com.almuramc.almuracontrolpanel.AlmuraControlPanel;
 
 public class CloseButton extends GenericButton {
 
