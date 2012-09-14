@@ -1,4 +1,10 @@
 name: AlmuraControlPanel
 main: me.znickq.almuracontrolpanel.AlmuraControlPanel
 version: 0.1
-authors: [ZNickq]
+authors: [ZNickq, Dockter]
+commands:
+  acp:
+    description: Almura Control Panel command.    
+    usage: /acp
+    permission: acp.use
+    permissions-message: You don't have <permission>  

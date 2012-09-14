@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import me.znickq.almuracontrolpanel.widgets.*;
 import org.bukkit.Bukkit;
+import org.getspout.spoutapi.gui.GenericLabel;
 import org.getspout.spoutapi.gui.GenericPopup;
 import org.getspout.spoutapi.gui.GenericTexture;
 import org.getspout.spoutapi.gui.RenderPriority;
@@ -23,22 +24,28 @@ public class ControlPanelGUI extends GenericPopup{
 	public ControlPanelGUI(AlmuraControlPanel instance) {
 		
 		
-		GenericTexture border = new GenericTexture("http://www.pixentral.com/pics/1duZT49LzMnodP53SIPGIqZ8xdKS.png");
+		GenericTexture border = new GenericTexture("http://www.almuramc.com/images/controlpanel.png");
 		border.setAnchor(WidgetAnchor.CENTER_CENTER);
 		border.setPriority(RenderPriority.High);
-		border.setWidth(140).setHeight(190);
-		border.shiftXPos(-60).shiftYPos(-80);
+		border.setWidth(190).setHeight(240);
+		border.shiftXPos(-90).shiftYPos(-120);
+		
+		GenericLabel gl = new GenericLabel("Almura Control Panel");
+		gl.setScale(1.2F);
+		gl.setAnchor(WidgetAnchor.CENTER_CENTER);
+		gl.setHeight(15).setWidth(GenericLabel.getStringWidth(gl.getText()));
+		gl.shiftXPos(-85).shiftYPos(-70);
 		
 		CloseButton close = new CloseButton(instance);
 		close.setAnchor(WidgetAnchor.CENTER_CENTER);
-		close.setHeight(15).setWidth(50);
-		
+		close.setHeight(20).setWidth(50);
+		close.shiftXPos(-15).shiftYPos(90);
 		attachWidgets(instance, border, close);
 		
 		
-		addHelpRequest();
-		
 		addInfoGuide();
+		
+		addHelpRequest();
 		
 		addMailerMan();
 		
@@ -48,16 +55,16 @@ public class ControlPanelGUI extends GenericPopup{
 		
 		addBackpack();
 		
-		int top = -60;
+		int top = -70;
 		
 		for(GuiButton button : available) {
 			button.setAnchor(WidgetAnchor.CENTER_CENTER);
-			button.shiftXPos(-button.getWidth()/2).shiftYPos(top);
-			button.setHeight(20).setWidth(70);
+			button.shiftXPos(-button.getWidth()/2-20).shiftYPos(top);
+			button.setHeight(20).setWidth(110);
 			attachWidget(instance, button);
-			top+=35;
+			top+=25;		
 		}
-		close.shiftXPos(-15).shiftYPos(top+10);
+		
 	}
 	
 	private void addPlayerPlus() {
@@ -85,7 +92,7 @@ public class ControlPanelGUI extends GenericPopup{
 	}
 	
 	private void addTextureMe() {
-		if(Bukkit.getPluginManager().isPluginEnabled("Textureme")) {
+		if(Bukkit.getPluginManager().isPluginEnabled("TextureMe")) {
 			available.add(new TextureMeButton());
 		}
 	}

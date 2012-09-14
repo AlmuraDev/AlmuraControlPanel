@@ -4,8 +4,8 @@
  */
 package me.znickq.almuracontrolpanel.widgets;
 
-import me.znickq.playerplus.PlayerPlus;
-import me.znickq.playerplus.TextureChooser;
+import com.almuramc.playerplus.PlayerPlus;
+import com.almuramc.playerplus.TextureChooser;
 import org.getspout.spoutapi.player.SpoutPlayer;
 
 /**

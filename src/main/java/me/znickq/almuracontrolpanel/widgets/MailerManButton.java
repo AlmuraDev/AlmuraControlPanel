@@ -15,7 +15,7 @@ import org.getspout.spoutapi.player.SpoutPlayer;
 public class MailerManButton extends GuiButton{
 	
 	public MailerManButton() {
-		super("Mailer Man");
+		super("Almura Email");
 	}
 
 	@Override

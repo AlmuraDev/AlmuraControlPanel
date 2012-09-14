@@ -14,7 +14,7 @@ import org.getspout.spoutapi.player.SpoutPlayer;
 public class BackpackButton extends GuiButton {
 	
 	public BackpackButton() {
-		super("Backpack");
+		super("Backpack Upgrade");
 	}
 
 	@Override
