@@ -14,12 +14,18 @@ import org.getspout.spoutapi.player.SpoutPlayer;
  * @author ZNickq
  */
 public abstract class GuiButton extends GenericButton {
+	private String permission;
 
-	public GuiButton(String text) {
+	public GuiButton(String text, String permission) {
 		super(text);
+                this.permission = permission;
 	}
 
-	public abstract void openGui(SpoutPlayer who);
+	public void openGui(SpoutPlayer who) {
+            if(permission != null && !who.hasPermission(permission)) {
+                setEnabled(false);
+            }
+        }
 
 	public <T> T get(String name, Class<T> type) {
 		return (T) Bukkit.getPluginManager().getPlugin(name);

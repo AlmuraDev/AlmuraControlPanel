@@ -15,7 +15,7 @@ import org.getspout.spoutapi.player.SpoutPlayer;
 public class HelpRequestButton extends GuiButton{
 	
 	public HelpRequestButton() {
-		super("Help Request");
+		super("Help Request", "helprequest.use");
 	}
 
 	@Override

@@ -15,7 +15,7 @@ import org.getspout.spoutapi.player.SpoutPlayer;
 public class PlayerPlusButton extends GuiButton{
 	
 	public PlayerPlusButton() {
-		super("Player Plus");
+		super("Player Plus","playerplus.use");
 	}
 
 	@Override

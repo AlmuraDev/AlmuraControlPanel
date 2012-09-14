@@ -15,7 +15,7 @@ import org.getspout.spoutapi.player.SpoutPlayer;
 public class TextureMeButton extends GuiButton{
 	
 	public TextureMeButton() {
-		super("Almura Textures");
+		super("Almura Textures","textureme.select");
 	}
 
 	@Override

@@ -14,7 +14,7 @@ import org.getspout.spoutapi.player.SpoutPlayer;
 public class InfoGuideButton extends GuiButton{
 	
 	public InfoGuideButton() {
-		super("Info Guide");
+		super("Info Guide", "infoguide.use");
 	}
 
 	@Override
