@@ -5,6 +5,8 @@
 package com.almuramc.almuracontrolpanel.widgets;
 
 import com.almuramc.backpack.bukkit.gui.UpgradePanel;
+
+import org.bukkit.ChatColor;
 import org.getspout.spoutapi.player.SpoutPlayer;
 
 /**
@@ -19,7 +21,11 @@ public class BackpackButton extends GuiButton {
 
 	@Override
 	public void openGui(SpoutPlayer who) {
+		if (who.hasPermission("Backpack.upgrade")) {
 		who.getMainScreen().attachPopupScreen(new UpgradePanel(who));
+		} else {
+			who.sendMessage(ChatColor.GREEN + "[Almura CP]:" + ChatColor.DARK_RED + "  Access Denied!");
+		}
 	}
 	
 }

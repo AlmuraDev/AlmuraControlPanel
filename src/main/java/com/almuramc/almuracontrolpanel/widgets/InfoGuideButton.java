@@ -5,7 +5,11 @@
 package com.almuramc.almuracontrolpanel.widgets;
 
 import net.dockter.infoguide.GuideListener;
+
+import org.bukkit.ChatColor;
 import org.getspout.spoutapi.player.SpoutPlayer;
+
+import com.almuramc.backpack.bukkit.gui.UpgradePanel;
 
 /**
  *
@@ -19,7 +23,11 @@ public class InfoGuideButton extends GuiButton{
 
 	@Override
 	public void openGui(SpoutPlayer who) {
-		GuideListener.openInfoGuide(who);
+		if (who.hasPermission("InfoGuide.view")) {
+			GuideListener.openInfoGuide(who);
+		} else {
+			who.sendMessage(ChatColor.GREEN + "[Almura CP]:" + ChatColor.DARK_RED + "  Access Denied!");
+		}		
 	}
 	
 }

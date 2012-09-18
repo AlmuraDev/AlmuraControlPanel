@@ -6,6 +6,10 @@ package com.almuramc.almuracontrolpanel.widgets;
 
 import com.almuramc.mailerman.MailerMan;
 import com.almuramc.mailerman.MainGUI;
+
+import net.dockter.infoguide.GuideListener;
+
+import org.bukkit.ChatColor;
 import org.getspout.spoutapi.player.SpoutPlayer;
 
 /**
@@ -20,8 +24,11 @@ public class MailerManButton extends GuiButton{
 
 	@Override
 	public void openGui(SpoutPlayer who) {
-		MailerMan pls = get("MailerMan", MailerMan.class);
-		who.getMainScreen().attachPopupScreen(new MainGUI(pls, who));
-	}
-	
+		if (who.hasPermission("MailerMan.use")) {
+			MailerMan pls = get("MailerMan", MailerMan.class);
+			who.getMainScreen().attachPopupScreen(new MainGUI(pls, who));
+		} else {
+			who.sendMessage(ChatColor.GREEN + "[Almura CP]:" + ChatColor.DARK_RED + "  Access Denied!");
+		}		
+	}	
 }

@@ -4,8 +4,11 @@
  */
 package com.almuramc.almuracontrolpanel.widgets;
 
+import com.almuramc.backpack.bukkit.gui.UpgradePanel;
 import com.almuramc.helprequest.HelpRequest;
 import com.almuramc.helprequest.MainGUI;
+
+import org.bukkit.ChatColor;
 import org.getspout.spoutapi.player.SpoutPlayer;
 
 /**
@@ -19,9 +22,13 @@ public class HelpRequestButton extends GuiButton{
 	}
 
 	@Override
-	public void openGui(SpoutPlayer who) {
-		HelpRequest pls = get("HelpRequest", HelpRequest.class);
-		who.getMainScreen().attachPopupScreen(new MainGUI(pls, who));
+	public void openGui(SpoutPlayer who) {				
+		if (who.hasPermission("HelpRequest.use")) {
+			HelpRequest pls = get("HelpRequest", HelpRequest.class);
+			who.getMainScreen().attachPopupScreen(new MainGUI(pls, who));
+		} else {
+			who.sendMessage(ChatColor.GREEN + "[Almura CP]:" + ChatColor.DARK_RED + "  Access Denied!");
+		}
 	}
 	
 }

@@ -6,7 +6,12 @@ package com.almuramc.almuracontrolpanel.widgets;
 
 import net.windwaker.textureme.TextureMe;
 import net.windwaker.textureme.gui.Selector;
+
+import org.bukkit.ChatColor;
 import org.getspout.spoutapi.player.SpoutPlayer;
+
+import com.almuramc.playerplus.PlayerPlus;
+import com.almuramc.playerplus.TextureChooser;
 
 /**
  *
@@ -20,8 +25,11 @@ public class TextureMeButton extends GuiButton{
 
 	@Override
 	public void openGui(SpoutPlayer who) {
-		TextureMe pls = get("TextureMe", TextureMe.class);
-		who.getMainScreen().attachPopupScreen(new Selector(pls, who));
-	}
-	
+		if (who.hasPermission("textureme.select")) {
+			TextureMe pls = get("TextureMe", TextureMe.class);
+			who.getMainScreen().attachPopupScreen(new Selector(pls, who));
+		} else {
+			who.sendMessage(ChatColor.GREEN + "[Almura CP]:" + ChatColor.DARK_RED + "  Access Denied!");
+		}		
+	}	
 }

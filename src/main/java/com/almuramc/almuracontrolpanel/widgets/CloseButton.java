@@ -4,7 +4,7 @@
  */
 package com.almuramc.almuracontrolpanel.widgets;
 
-import me.znickq.playerplus.PlayerPlus;
+import com.almuramc.playerplus.PlayerPlus;
 import org.getspout.spoutapi.event.screen.ButtonClickEvent;
 import org.getspout.spoutapi.gui.GenericButton;
 
