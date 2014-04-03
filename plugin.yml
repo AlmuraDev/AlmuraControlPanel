@@ -1,10 +1,15 @@
 name: AlmuraControlPanel
 main: com.almuramc.almuracontrolpanel.AlmuraControlPanel
-version: 0.1
+version: 1.2
 authors: [ZNickq, Dockter]
 commands:
   acp:
     description: Almura Control Panel command.    
     usage: /acp
+    permission: acp.use
+    permissions-message: You don't have <permission>  
+  checkcape:
+    description: checks cape
+    usage: /checkcape
     permission: acp.use
     permissions-message: You don't have <permission>  

@@ -9,10 +9,7 @@ import org.getspout.spoutapi.event.screen.ButtonClickEvent;
 import org.getspout.spoutapi.gui.GenericButton;
 import org.getspout.spoutapi.player.SpoutPlayer;
 
-/**
- *
- * @author ZNickq
- */
+
 public abstract class GuiButton extends GenericButton {
 	private String permission;
 
@@ -27,6 +24,7 @@ public abstract class GuiButton extends GenericButton {
             }
         }
 
+	@SuppressWarnings("unchecked")
 	public <T> T get(String name, Class<T> type) {
 		return (T) Bukkit.getPluginManager().getPlugin(name);
 	}
@@ -38,6 +36,6 @@ public abstract class GuiButton extends GenericButton {
 			public void run() {
 				openGui(event.getPlayer());
 			}
-		}, 20L);
+		}, 10L);
 	}
 }

@@ -4,17 +4,12 @@
  */
 package com.almuramc.almuracontrolpanel.widgets;
 
-import com.almuramc.backpack.bukkit.gui.UpgradePanel;
 import com.almuramc.helprequest.HelpRequest;
 import com.almuramc.helprequest.MainGUI;
 
 import org.bukkit.ChatColor;
 import org.getspout.spoutapi.player.SpoutPlayer;
 
-/**
- *
- * @author ZNickq
- */
 public class HelpRequestButton extends GuiButton{
 	
 	public HelpRequestButton() {

@@ -4,24 +4,25 @@
  */
 package com.almuramc.almuracontrolpanel.widgets;
 
-import net.dockter.infoguide.GuideListener;
+import com.almuradev.recipes.RecipesPlugin;
+import com.almuradev.recipes.display.RecipesPopup;
 
 import org.bukkit.ChatColor;
 import org.getspout.spoutapi.player.SpoutPlayer;
 
-public class InfoGuideButton extends GuiButton{
+public class RecipesButton extends GuiButton{
 	
-	public InfoGuideButton() {
-		super("Info Guide", "infoguide.use");
+	public RecipesButton() {
+		super("Recipe Browser","recipes.use");
 	}
 
 	@Override
 	public void openGui(SpoutPlayer who) {
-		if (who.hasPermission("InfoGuide.view")) {
-			GuideListener.openInfoGuide(who);
+		if (who.hasPermission("recipes.use")) {
+			RecipesPlugin pls = get("Recipes", RecipesPlugin.class);
+			who.getMainScreen().attachPopupScreen(new RecipesPopup(pls, who));
 		} else {
 			who.sendMessage(ChatColor.GREEN + "[Almura CP]:" + ChatColor.DARK_RED + "  Access Denied!");
 		}		
-	}
-	
+	}	
 }

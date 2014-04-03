@@ -4,8 +4,6 @@
  */
 package com.almuramc.almuracontrolpanel.widgets;
 
-import com.almuramc.mailerman.MailerMan;
-import com.almuramc.mailerman.MainGUI;
 import com.almuramc.playerplus.PlayerPlus;
 import com.almuramc.playerplus.TextureChooser;
 
