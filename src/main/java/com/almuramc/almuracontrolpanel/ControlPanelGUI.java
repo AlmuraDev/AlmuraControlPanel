@@ -52,7 +52,7 @@ public class ControlPanelGUI extends GenericPopup{
 		GoToNewbieButton cafeButton = new GoToNewbieButton(instance);
 		cafeButton.setAnchor(WidgetAnchor.CENTER_CENTER);
 		cafeButton.setHeight(20).setWidth(80);
-		cafeButton.shiftXPos(-5).shiftYPos(-35);
+		cafeButton.shiftXPos(-45).shiftYPos(-35);
 		
 		GoToCustomButton customButton = new GoToCustomButton(instance);
 		customButton.setAnchor(WidgetAnchor.CENTER_CENTER);
@@ -66,12 +66,25 @@ public class ControlPanelGUI extends GenericPopup{
 		
 		GoTogateButton gateButton = new GoTogateButton(instance);
 		gateButton.setAnchor(WidgetAnchor.CENTER_CENTER);
-		gateButton.setHeight(-40).setWidth(80);
-		gateButton.shiftXPos(25).shiftYPos(40);
+		gateButton.setHeight(20).setWidth(80);
+		gateButton.shiftXPos(-45).shiftYPos(40);
 		
+		AlmuraMapButton mapButton = new AlmuraMapButton(true);
+		mapButton.setAnchor(WidgetAnchor.CENTER_CENTER);
+		mapButton.setHeight(20).setWidth(80);
+		mapButton.shiftXPos(125).shiftYPos(-60);
 		
+		AlmuraWebsiteButton websiteButton = new AlmuraWebsiteButton(true);
+		websiteButton.setAnchor(WidgetAnchor.CENTER_CENTER);
+		websiteButton.setHeight(20).setWidth(80);
+		websiteButton.shiftXPos(125).shiftYPos(-35);
 		
-		attachWidgets(instance, border, apps, locs, close, spawnButton, cafeButton, customButton, supergateButton, gateButton);
+		SpoutWebsiteButton spoutWebsiteButton = new SpoutWebsiteButton(true);
+		spoutWebsiteButton.setAnchor(WidgetAnchor.CENTER_CENTER);
+		spoutWebsiteButton.setHeight(20).setWidth(80);
+		spoutWebsiteButton.shiftXPos(125).shiftYPos(-10);
+		
+		attachWidgets(instance, border, apps, locs, close, spawnButton, cafeButton, customButton, supergateButton, gateButton, mapButton, websiteButton, spoutWebsiteButton);
 		
 		addInfoGuide();
 		
