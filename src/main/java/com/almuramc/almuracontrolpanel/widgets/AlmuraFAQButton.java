@@ -13,21 +13,21 @@ import org.getspout.spoutapi.player.SpoutPlayer;
 
 import com.almuramc.almuracontrolpanel.AlmuraControlPanel;
 
-public class SpoutWebsiteButton extends GenericButton {
+public class AlmuraFAQButton extends GenericButton {
 
-	public SpoutWebsiteButton(boolean openMain) {
-		super("Spout Website");
+	public AlmuraFAQButton(boolean openMain) {
+		super("Getting Started FAQ");
 	}
 
 	@SuppressWarnings("deprecation")
 	@Override
-	public void onButtonClick(ButtonClickEvent event) {		
+	public void onButtonClick(ButtonClickEvent event) {
 		final SpoutPlayer sPlayer = (SpoutPlayer)event.getPlayer();
 		sPlayer.closeActiveWindow();
 		Bukkit.getScheduler().scheduleSyncDelayedTask(AlmuraControlPanel.getInstance(), new Runnable() {		
 			public void run() {
 				try {					
-					sPlayer.sendLink("http://www.spoutcraft.org");			
+					sPlayer.sendLink("http://almura.enjin.com/forum/m/10923981/viewforum/2144690");			
 				} catch (MalformedURLException e) {			
 					e.printStackTrace();
 				}		

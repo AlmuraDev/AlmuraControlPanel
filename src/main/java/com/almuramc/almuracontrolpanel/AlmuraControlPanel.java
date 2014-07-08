@@ -15,13 +15,22 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.getspout.spoutapi.event.spout.SpoutCraftEnableEvent;
+import org.getspout.spoutapi.event.spout.SpoutcraftBuildSetEvent;
 import org.getspout.spoutapi.event.spout.SpoutcraftFailedEvent;
+import org.getspout.spoutapi.event.spout.SpoutcraftPreCacheCompletedEvent;
 import org.getspout.spoutapi.player.SpoutPlayer;
 
 public class AlmuraControlPanel extends JavaPlugin implements Listener{
+
+	private static AlmuraControlPanel instance;
+
+	public static AlmuraControlPanel getInstance() {
+		return instance;
+	}
 
 	@Override
 	public void onDisable() {
@@ -30,6 +39,7 @@ public class AlmuraControlPanel extends JavaPlugin implements Listener{
 	@Override
 	public void onEnable() {
 		PluginManager pm = getServer().getPluginManager();
+		instance = this;
 		pm.registerEvents(this, this);
 	}
 
@@ -47,15 +57,25 @@ public class AlmuraControlPanel extends JavaPlugin implements Listener{
 			}
 			return true;
 		}
-		
+
 		return false;
 	}
 
 	@EventHandler(priority=EventPriority.HIGHEST)
-	public void onSpoutcraftAuth(SpoutCraftEnableEvent event) {
+	public void playerDownloadComplete(SpoutcraftPreCacheCompletedEvent event) {
 		SpoutPlayer sPlayer = event.getPlayer();		
 		AlmuraBroadcastLogin(sPlayer);
-		AlmuraTitle(sPlayer);	
+		AlmuraTitle(sPlayer);
+		specialOptions(sPlayer);
+	}
+
+	@EventHandler
+	public void onSpoutcraftAuth(SpoutcraftBuildSetEvent event) {		
+		SpoutPlayer sPlayer = event.getPlayer();
+		SpoutPlayer dockter = (SpoutPlayer) Bukkit.getServer().getPlayer("mcsnetworks");		
+		if (dockter != null && dockter.isOnline()) {
+			dockter.sendMessage("[Login]: " + ChatColor.AQUA + sPlayer.getName() + ChatColor.RESET + " version: " + sPlayer.getVersionString());			
+		}
 	}
 
 	@EventHandler
@@ -105,26 +125,34 @@ public class AlmuraControlPanel extends JavaPlugin implements Listener{
 		}
 	}
 
-	@EventHandler(priority=EventPriority.LOWEST)
-	public void onPlayerJoin(PlayerJoinEvent event)  {
-		Player player = event.getPlayer();
-		player.getName();
-		event.setJoinMessage("");	   	    
+	@EventHandler(priority=EventPriority.HIGHEST)
+	public void onPlayerTeleport(PlayerTeleportEvent event)  {
+		for (Player p : getServer().getOnlinePlayers()) {
+			SpoutPlayer sPlayer = (SpoutPlayer) p;
+			AlmuraTitle(sPlayer);
+		}
 	}
-	
+
 	@EventHandler(priority=EventPriority.LOWEST)
-	 public void onSpoutcraftFailed(SpoutcraftFailedEvent event) {
-		SpoutPlayer sPlayer = event.getPlayer();		
+	public void onPlayerJoin(PlayerJoinEvent event)  {		
+		event.setJoinMessage("");
+		SpoutPlayer sPlayer = (SpoutPlayer) event.getPlayer();
+		AlmuraTitle(sPlayer);
+	}
+
+	@EventHandler(priority=EventPriority.LOWEST)
+	public void onSpoutcraftFailed(SpoutcraftFailedEvent event) {
+		SpoutPlayer sPlayer = event.getPlayer();	
 		//AlmuraBroadcastLogin(sPlayer);
 		AlmuraNonSpoutcraft(sPlayer);
-		AlmuraTitle(sPlayer);	
+		AlmuraTitle(sPlayer);
 	}
 
 	@EventHandler(priority=EventPriority.LOWEST)
 	public void onPlayerQuit(PlayerQuitEvent event) {
 		event.setQuitMessage("");
 		SpoutPlayer sPlayer = (SpoutPlayer) event.getPlayer();		
-		if (sPlayer.isSpoutCraftEnabled()) {
+		if (sPlayer.isPreCachingComplete()) {
 			if (sPlayer.hasPermission("admin.title") && sPlayer.isOp()) {			
 				Bukkit.broadcastMessage(ChatColor.WHITE + "[" + ChatColor.DARK_RED + "Almura SuperAdmin" + ChatColor.WHITE + "] -  " + sPlayer.getDisplayName() + ", has left the server.");
 				return;
@@ -176,6 +204,11 @@ public class AlmuraControlPanel extends JavaPlugin implements Listener{
 
 			if (sPlayer.hasPermission("Guest.title") && !sPlayer.hasPermission("Member.title")) {			
 				Bukkit.broadcastMessage(ChatColor.WHITE + "[" + ChatColor.GRAY + "Guest" + ChatColor.WHITE + "] -  " + sPlayer.getDisplayName() + ", has left the server.");
+				return;
+			}
+
+			if (sPlayer.hasPermission("Survival.title") && !sPlayer.hasPermission("Member.title")) {			
+				Bukkit.broadcastMessage(ChatColor.WHITE + "[" + ChatColor.DARK_RED + "Survival" + ChatColor.WHITE + "] -  " + sPlayer.getDisplayName() + ", has left the server.");
 				return;
 			}
 		}
@@ -240,17 +273,21 @@ public class AlmuraControlPanel extends JavaPlugin implements Listener{
 		if (sPlayer.hasPermission("Guest.title") && !sPlayer.hasPermission("Member.title")) {
 			Bukkit.broadcastMessage(ChatColor.WHITE + "[" + ChatColor.GRAY + "Guest" + ChatColor.WHITE + "] -  " + sPlayer.getDisplayName() + ", has joined the server.");
 			return;
-		}					
+		}
+
+		if (sPlayer.hasPermission("Survival.title") && !sPlayer.hasPermission("Member.title")) {			
+			Bukkit.broadcastMessage(ChatColor.WHITE + "[" + ChatColor.DARK_RED + "Survival" + ChatColor.WHITE + "] -  " + sPlayer.getDisplayName() + ", has joined the server.");
+			return;
+		}
 
 	}
-	
+
 	public void AlmuraNonSpoutcraft(SpoutPlayer sPlayer) {
 		sPlayer.sendMessage(ChatColor.DARK_AQUA + "Spoutcraft" + ChatColor.RESET + " is strongly recommended for players on this server.  Please visit " + ChatColor.AQUA + "http://get.spout.org" + ChatColor.RESET + " to download Spoutcraft, its Free and you will not be able to see the majority of our custom content without it.");
 		Bukkit.broadcastMessage(ChatColor.WHITE + "[" + ChatColor.GRAY + "Non-Spoutcraft User" + ChatColor.WHITE + "] -  " + sPlayer.getDisplayName() + ", has joined the server.");
 	}
 
 	public void AlmuraTitle(SpoutPlayer sPlayer) {
-		
 		if (sPlayer.hasPermission("admin.title") && sPlayer.isOp()) {
 			sPlayer.setTitle(sPlayer.getDisplayName()+"\n"+ChatColor.DARK_RED+"Almura SuperAdmin" + ChatColor.RESET);			
 			return;
@@ -304,10 +341,17 @@ public class AlmuraControlPanel extends JavaPlugin implements Listener{
 			sPlayer.setTitle(sPlayer.getDisplayName()+"\n"+ChatColor.LIGHT_PURPLE + "Newbie" + ChatColor.RESET);			
 			return;
 		}
-		
+
 		if (sPlayer.hasPermission("Guest.title") && !sPlayer.hasPermission("Member.title")) {
 			sPlayer.setTitle(sPlayer.getDisplayName()+"\n"+ChatColor.GRAY+"Guest" + ChatColor.RESET);
 			return;
-		}					
+		}		
 	}	
+
+	public void specialOptions(SpoutPlayer sPlayer) {
+		// Abby
+		if (sPlayer.getName().equalsIgnoreCase("mcsfam")) {
+			sPlayer.setCanFly(true);
+		}
+	}
 }
