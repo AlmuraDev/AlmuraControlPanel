@@ -89,9 +89,10 @@
 		<dependency>
 			<groupId>org.spoutcraft</groupId>
 			<artifactId>spoutcraftplugin</artifactId>
-			<version>${spoutcraftpluginVersion}</version>
-			<scope>provided</scope>
-		</dependency>
+			<version>unknown</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/libs/spoutcraftplugin-1.6.4.jar</systemPath>
+		</dependency>		
 		<dependency>
 			<groupId>uk.com.robust-it</groupId>
 			<artifactId>cloning</artifactId>
